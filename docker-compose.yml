@@ -1,0 +1,16 @@
+services:
+  rotary:
+    build:
+      dockerfile: dockerfile
+    image: rotary:latest
+    dns: 8.8.8.8
+    container_name: rotary
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ['0']
+              capabilities: [gpu]
